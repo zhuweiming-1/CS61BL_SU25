@@ -1,7 +1,6 @@
 // Uncomment this file when you're done with Path
 
 
-/*
 import java.util.ArrayList;
 
 import java.awt.Color;
@@ -150,4 +149,3 @@ public class PathHarness extends JPanel implements Runnable {
     }
 }
 
- */
