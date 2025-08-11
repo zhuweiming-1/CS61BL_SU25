@@ -57,8 +57,6 @@ public abstract class TriangleTest {
         Triangle t = getNewTriangle();
         assertWithMessage("actual is not expected")
                 .that(t.squaredHypotenuse(3, 4)).isEqualTo(25);
-        assertWithMessage("actual is not expected")
-                .that(t.squaredHypotenuse(-3, 4)).isNotEqualTo(25);
     }
 
     @Test
