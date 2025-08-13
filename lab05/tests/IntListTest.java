@@ -1,7 +1,10 @@
 import org.junit.Test;
+
 import static com.google.common.truth.Truth.assertWithMessage;
 
-/** A suite of tests for IntList. */
+/**
+ * A suite of tests for IntList.
+ */
 
 public class IntListTest {
 
@@ -141,23 +144,44 @@ public class IntListTest {
     /**
      * Do not use the new keyword in your tests. You can create
      * lists using the handy IntList.of method.
-     *
+     * <p>
      * Make sure to include test cases involving lists of various sizes
      * on both sides of the operation. That includes the empty of, which
      * can be instantiated, for example, with
      * IntList empty = IntList.of().
-     *
+     * <p>
      * Keep in mind that dcatenate(A, B) is NOT required to leave A untouched.
      * Anything can happen to A.
      */
 
     @Test
     public void testCatenate() {
-        // TODO: Add tests
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.of(4, 5, 6);
+
+        assertWithMessage("")
+                .that(IntList.catenate(A, B)).isEqualTo(IntList.of(1, 2, 3, 4, 5, 6));
+        assertWithMessage("")
+                .that(A).isEqualTo(IntList.of(1, 2, 3));
+
+        assertWithMessage("")
+                .that(IntList.catenate(null, B)).isEqualTo(IntList.of(4, 5, 6));
+
+        assertWithMessage("")
+                .that(IntList.catenate(A, null)).isEqualTo(IntList.of(1, 2, 3));
+        assertWithMessage("")
+                .that(A).isEqualTo(IntList.of(1, 2, 3));
     }
 
     @Test
     public void testDCatenate() {
-        // TODO: Add test
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.of(4, 5, 6);
+
+        assertWithMessage("")
+                .that(IntList.dcatenate(A, B)).isEqualTo(IntList.of(1, 2, 3, 4, 5, 6));
+        assertWithMessage("")
+                .that(A).isEqualTo(IntList.of(1, 2, 3, 4, 5, 6));
+        
     }
 }
