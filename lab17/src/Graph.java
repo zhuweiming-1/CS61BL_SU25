@@ -188,7 +188,7 @@ public class Graph implements Iterable<Integer> {
             return List.of(start);
         }
         Stack<Integer> stack = new Stack<>();
-        List<Integer> result = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
         boolean[] visited = new boolean[vertexCount];
         Integer[] edgeTo = new Integer[vertexCount];
         stack.push(start);
@@ -201,10 +201,10 @@ public class Graph implements Iterable<Integer> {
                     if (neighbor == stop) {
                         result.addFirst(neighbor);
                         while (curr != null) {
-                            result.addFirst(edgeTo[curr]);
+                            result.addFirst(curr);
                             curr = edgeTo[curr];
                         }
-                        break;
+                        return result;
                     }
                     stack.push(neighbor);
                     edgeTo[neighbor] = curr;
