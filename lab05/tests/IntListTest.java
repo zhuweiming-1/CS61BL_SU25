@@ -182,6 +182,6 @@ public class IntListTest {
                 .that(IntList.dcatenate(A, B)).isEqualTo(IntList.of(1, 2, 3, 4, 5, 6));
         assertWithMessage("")
                 .that(A).isEqualTo(IntList.of(1, 2, 3, 4, 5, 6));
-        
+
     }
 }
