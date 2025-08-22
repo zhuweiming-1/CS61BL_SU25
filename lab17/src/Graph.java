@@ -188,7 +188,7 @@ public class Graph implements Iterable<Integer> {
             return List.of(start);
         }
         Stack<Integer> stack = new Stack<>();
-        ArrayList<Integer> result = new ArrayList<>();
+        Stack<Integer> result = new Stack<>();
         boolean[] visited = new boolean[vertexCount];
         Integer[] edgeTo = new Integer[vertexCount];
         stack.push(start);
@@ -199,19 +199,19 @@ public class Graph implements Iterable<Integer> {
             for (Integer neighbor : neighbors) {
                 if (!visited[neighbor]) {
                     if (neighbor == stop) {
-                        result.addFirst(neighbor);
+                        result.push(neighbor);
                         while (curr != null) {
-                            result.addFirst(curr);
+                            result.push(curr);
                             curr = edgeTo[curr];
                         }
-                        return result;
+                        return result.reversed();
                     }
                     stack.push(neighbor);
                     edgeTo[neighbor] = curr;
                 }
             }
         }
-        return result;
+        return result.reversed();
     }
 
     public List<Integer> topologicalSort() {
