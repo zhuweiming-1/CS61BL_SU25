@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.Edge;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.UF;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
@@ -186,7 +187,31 @@ public class Graph implements Iterable<Integer> {
         if (start == stop) {
             return List.of(start);
         }
-        return null;
+        Stack<Integer> stack = new Stack<>();
+        List<Integer> result = new ArrayList<>();
+        boolean[] visited = new boolean[vertexCount];
+        Integer[] edgeTo = new Integer[vertexCount];
+        stack.push(start);
+        while (!stack.isEmpty()) {
+            Integer curr = stack.pop();
+            visited[curr] = true;
+            List<Integer> neighbors = neighbors(curr);
+            for (Integer neighbor : neighbors) {
+                if (!visited[neighbor]) {
+                    if (neighbor == stop) {
+                        result.addFirst(neighbor);
+                        while (curr != null) {
+                            result.addFirst(edgeTo[curr]);
+                            curr = edgeTo[curr];
+                        }
+                        break;
+                    }
+                    stack.push(neighbor);
+                    edgeTo[neighbor] = curr;
+                }
+            }
+        }
+        return result;
     }
 
     public List<Integer> topologicalSort() {
