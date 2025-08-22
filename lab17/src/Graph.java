@@ -204,14 +204,14 @@ public class Graph implements Iterable<Integer> {
                             result.push(curr);
                             curr = edgeTo[curr];
                         }
-                        return result.reversed();
+                        return result;
                     }
                     stack.push(neighbor);
                     edgeTo[neighbor] = curr;
                 }
             }
         }
-        return result.reversed();
+        return result;
     }
 
     public List<Integer> topologicalSort() {
